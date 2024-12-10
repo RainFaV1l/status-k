@@ -1,0 +1,419 @@
+.
+├── Communicators
+│   ├── Auth
+│   │   └── AuthCommunicator.php
+│   └── Post
+│       └── PostCommunicator.php
+├── Modules
+│   ├── Auth
+│   │   ├── app
+│   │   │   ├── Dto
+│   │   │   │   └── UserDto.php
+│   │   │   ├── Enums
+│   │   │   │   └── UserRoleEnum.php
+│   │   │   ├── Exceptions
+│   │   │   │   └── InvalidCredentialsException.php
+│   │   │   ├── Http
+│   │   │   │   ├── Controllers
+│   │   │   │   │   └── AuthController.php
+│   │   │   │   ├── Middleware
+│   │   │   │   │   └── CheckBanMiddleware.php
+│   │   │   │   └── Requests
+│   │   │   │       ├── LoginRequest.php
+│   │   │   │       └── RegisterRequest.php
+│   │   │   ├── Interfaces
+│   │   │   │   └── AuthRepositoryInterface.php
+│   │   │   ├── Models
+│   │   │   │   ├── User.php
+│   │   │   │   └── UserRole.php
+│   │   │   ├── Providers
+│   │   │   │   ├── AuthServiceProvider.php
+│   │   │   │   ├── EventServiceProvider.php
+│   │   │   │   └── RouteServiceProvider.php
+│   │   │   ├── Repositories
+│   │   │   │   └── AuthRepository.php
+│   │   │   └── Services
+│   │   │       └── AuthService.php
+│   │   ├── composer.json
+│   │   ├── config
+│   │   │   └── config.php
+│   │   ├── database
+│   │   │   ├── factories
+│   │   │   │   ├── UserFactory.php
+│   │   │   │   └── UserRoleFactory.php
+│   │   │   ├── migrations
+│   │   │   │   ├── 2024_12_01_204403_user_roles.php
+│   │   │   │   ├── 2024_12_01_204405_create_users_table.php
+│   │   │   │   └── 2024_12_05_003538_add_column_is_banned_to_users_table.php
+│   │   │   └── seeders
+│   │   │       ├── AuthDatabaseSeeder.php
+│   │   │       ├── UserRoleSeeder.php
+│   │   │       └── UserSeeder.php
+│   │   ├── module.json
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── postcss.config.js
+│   │   ├── resources
+│   │   │   ├── assets
+│   │   │   │   ├── js
+│   │   │   │   │   └── app.js
+│   │   │   │   └── sass
+│   │   │   │       └── app.scss
+│   │   │   └── views
+│   │   │       ├── components
+│   │   │       ├── layouts
+│   │   │       │   └── master.blade.php
+│   │   │       ├── login.blade.php
+│   │   │       ├── profile.blade.php
+│   │   │       ├── register.blade.php
+│   │   │       └── verify-email.blade.php
+│   │   ├── routes
+│   │   │   ├── api.php
+│   │   │   └── web.php
+│   │   ├── tailwind.config.js
+│   │   ├── tests
+│   │   │   ├── Feature
+│   │   │   └── Unit
+│   │   └── vite.config.js
+│   ├── Home
+│   │   ├── app
+│   │   │   ├── Http
+│   │   │   │   └── Controllers
+│   │   │   │       └── HomeController.php
+│   │   │   └── Providers
+│   │   │       ├── EventServiceProvider.php
+│   │   │       ├── HomeServiceProvider.php
+│   │   │       └── RouteServiceProvider.php
+│   │   ├── composer.json
+│   │   ├── config
+│   │   │   └── config.php
+│   │   ├── database
+│   │   │   ├── factories
+│   │   │   ├── migrations
+│   │   │   └── seeders
+│   │   │       └── HomeDatabaseSeeder.php
+│   │   ├── module.json
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── postcss.config.js
+│   │   ├── resources
+│   │   │   ├── assets
+│   │   │   │   ├── js
+│   │   │   │   │   └── app.js
+│   │   │   │   └── sass
+│   │   │   │       └── app.scss
+│   │   │   └── views
+│   │   │       ├── components
+│   │   │       │   ├── alerts.blade.php
+│   │   │       │   └── header.blade.php
+│   │   │       ├── index.blade.php
+│   │   │       └── layouts
+│   │   │           └── master.blade.php
+│   │   ├── routes
+│   │   │   ├── api.php
+│   │   │   └── web.php
+│   │   ├── tailwind.config.js
+│   │   ├── tests
+│   │   │   ├── Feature
+│   │   │   └── Unit
+│   │   └── vite.config.js
+│   └── Post
+│       ├── app
+│       │   ├── Filters
+│       │   │   ├── Filter.php
+│       │   │   └── PostFilter.php
+│       │   ├── Http
+│       │   │   ├── Controllers
+│       │   │   │   └── PostController.php
+│       │   │   └── Requests
+│       │   │       ├── PostFilterRequest.php
+│       │   │       ├── StoreRequest.php
+│       │   │       └── UpdateRequest.php
+│       │   ├── Interfaces
+│       │   │   └── PostRepositoryInterface.php
+│       │   ├── Models
+│       │   │   ├── Post.php
+│       │   │   └── PostCategory.php
+│       │   ├── Providers
+│       │   │   ├── EventServiceProvider.php
+│       │   │   ├── PostServiceProvider.php
+│       │   │   └── RouteServiceProvider.php
+│       │   ├── Repositories
+│       │   │   └── PostRepository.php
+│       │   ├── Services
+│       │   │   └── PostService.php
+│       │   └── Traits
+│       │       └── HasFilter.php
+│       ├── composer.json
+│       ├── config
+│       │   └── config.php
+│       ├── database
+│       │   ├── factories
+│       │   │   ├── PostCategoryFactory.php
+│       │   │   └── PostFactory.php
+│       │   ├── migrations
+│       │   │   ├── 2024_12_04_232826_create_post_categories_table.php
+│       │   │   └── 2024_12_04_232841_create_posts_table.php
+│       │   └── seeders
+│       │       ├── PostCategorySeeder.php
+│       │       ├── PostDatabaseSeeder.php
+│       │       └── PostSeeder.php
+│       ├── module.json
+│       ├── package.json
+│       ├── resources
+│       │   ├── assets
+│       │   │   ├── js
+│       │   │   │   └── app.js
+│       │   │   └── sass
+│       │   │       └── app.scss
+│       │   └── views
+│       │       ├── components
+│       │       ├── create.blade.php
+│       │       ├── index.blade.php
+│       │       ├── layouts
+│       │       │   └── master.blade.php
+│       │       └── show.blade.php
+│       ├── routes
+│       │   ├── api.php
+│       │   └── web.php
+│       ├── tests
+│       │   ├── Feature
+│       │   └── Unit
+│       └── vite.config.js
+├── README.md
+├── app
+│   ├── Http
+│   │   └── Controllers
+│   │       └── Controller.php
+│   ├── Models
+│   ├── MoonShine
+│   │   ├── Pages
+│   │   │   └── Dashboard.php
+│   │   └── Resources
+│   │       ├── PostCategoryResource.php
+│   │       ├── PostResource.php
+│   │       ├── UserResource.php
+│   │       └── UserRoleResource.php
+│   └── Providers
+│       ├── AppServiceProvider.php
+│       └── MoonShineServiceProvider.php
+├── artisan
+├── bootstrap
+│   ├── app.php
+│   ├── cache
+│   │   ├── modules.php
+│   │   ├── packages.php
+│   │   └── services.php
+│   └── providers.php
+├── composer.json
+├── composer.lock
+├── config
+│   ├── app.php
+│   ├── auth.php
+│   ├── blade-ui-kit.php
+│   ├── broadcasting.php
+│   ├── cache.php
+│   ├── database.php
+│   ├── filesystems.php
+│   ├── logging.php
+│   ├── mail.php
+│   ├── modules.php
+│   ├── moonshine.php
+│   ├── passport.php
+│   ├── queue.php
+│   ├── reverb.php
+│   ├── services.php
+│   └── session.php
+├── database
+│   ├── database.sqlite
+│   ├── factories
+│   ├── migrations
+│   │   ├── 0001_01_01_000001_create_cache_table.php
+│   │   └── 0001_01_01_000002_create_jobs_table.php
+│   └── seeders
+│       └── DatabaseSeeder.php
+├── lang
+├── modules_statuses.json
+├── package-lock.json
+├── package.json
+├── phpunit.xml
+├── postcss.config.js
+├── project_structure.txt
+├── public
+│   ├── assets
+│   │   └── favicon.svg
+│   ├── build
+│   │   ├── assets
+│   │   │   ├── app-Bmj1h9ic.css
+│   │   │   └── app-CLEnkNzK.js
+│   │   └── manifest.json
+│   ├── build-auth
+│   │   ├── assets
+│   │   │   ├── app-4ed993c7.js
+│   │   │   └── app-8c4ba960.css
+│   │   └── manifest.json
+│   ├── build-home
+│   │   ├── assets
+│   │   │   ├── app-4ed993c7.js
+│   │   │   └── app-67af4308.css
+│   │   └── manifest.json
+│   ├── favicon.ico
+│   ├── hot
+│   ├── index.php
+│   ├── robots.txt
+│   └── storage -> /Applications/XAMPP/xamppfiles/htdocs/k-status/storage/app/public
+├── resources
+│   ├── css
+│   │   └── app.css
+│   ├── js
+│   │   ├── app.js
+│   │   ├── bootstrap.js
+│   │   └── echo.js
+│   └── views
+│       └── errors
+│           └── 404.blade.php
+├── routes
+│   ├── api.php
+│   ├── channels.php
+│   ├── console.php
+│   └── web.php
+├── storage
+│   ├── app
+│   │   ├── modules
+│   │   │   └── modules.used
+│   │   ├── private
+│   │   └── public
+│   ├── framework
+│   │   ├── cache
+│   │   │   └── data
+│   │   │       ├── 3b
+│   │   │       │   └── 2b
+│   │   │       │       └── 3b2b61f40aa617a01ec691491594c6af688a5481
+│   │   │       └── 88
+│   │   │           └── f6
+│   │   │               └── 88f68c26d031ae8aaeb14c8e59e3e132e20afd67
+│   │   ├── sessions
+│   │   ├── testing
+│   │   └── views
+│   │       ├── 06e0ef5b5905fbe2083bd24eb97be0c6.php
+│   │       ├── 0bafd2b6be67b9aa75424e9d867b69f9.php
+│   │       ├── 0f2201f3f78e698ca17b0b43c86373b7.php
+│   │       ├── 12d765375baa1cf530e156fd947ab84f.php
+│   │       ├── 1ae67e95813a91ca8aabe5a0910217d3.php
+│   │       ├── 2451a83b08618f0b715f71bdd6f4ea6c.php
+│   │       ├── 31c0b767c42a25d8bc0dfa37ad7e3a6e.php
+│   │       ├── 35d3435408847c226c4dac8a468c2d0a.php
+│   │       ├── 3c503f798537c41892933b3834d2b75c.php
+│   │       ├── 3f351bae2bdfe02216b197cc95ee013a.blade.php
+│   │       ├── 58fe0e840fcc55682bdcbb7d3f126562.php
+│   │       ├── 65485add86cf7284b42d0182b50bb54e.php
+│   │       ├── 6d80fbfcfc208750602b0681cdef0231.php
+│   │       ├── 7253aaba803935dbbeee60f2add35ab0.php
+│   │       ├── 76a59c9a2a4fc6a7da2b974bbb2e46f4.php
+│   │       ├── 88679f460dfc00daf715824f74294c93.php
+│   │       ├── 91e725fd24e1e9635d1927fe21e58fdc.php
+│   │       ├── 9b7dccd2b4b2f818c3ff177e02dcb7e8.php
+│   │       ├── b201a0414acf9e9f61cdaa2e153da1bd.php
+│   │       ├── b5fd1afeddbc735a7b96e55358dd2ac0.php
+│   │       ├── c33a3b6746a069a56fc1943fcd710e67.php
+│   │       ├── dd5702217e16eb725b379fccb1ebbe6e.php
+│   │       ├── e2b445b99eee50dbe38a0a8cbee17418.php
+│   │       ├── f10ee88e350da52993da8e2333e02381.php
+│   │       ├── f8e689b0ad6c36058a5d842495541856.php
+│   │       ├── f9edf339f2323d9b341dd926d7183e0e.php
+│   │       └── fac73abfa3dc31dd2b3ced6ab866d6da.php
+│   ├── logs
+│   │   └── laravel.log
+│   ├── oauth-private.key
+│   └── oauth-public.key
+├── stubs
+│   └── nwidart-stubs
+│       ├── action-invoke.stub
+│       ├── action.stub
+│       ├── assets
+│       │   ├── js
+│       │   │   └── app.stub
+│       │   └── sass
+│       │       └── app.stub
+│       ├── cast.stub
+│       ├── channel.stub
+│       ├── class-invoke.stub
+│       ├── class.stub
+│       ├── command.stub
+│       ├── component-class.stub
+│       ├── component-view.stub
+│       ├── composer.stub
+│       ├── controller-api.stub
+│       ├── controller-plain.stub
+│       ├── controller.invokable.stub
+│       ├── controller.stub
+│       ├── enum.stub
+│       ├── event-provider.stub
+│       ├── event.stub
+│       ├── exception-render-report.stub
+│       ├── exception-render.stub
+│       ├── exception-report.stub
+│       ├── exception.stub
+│       ├── factory.stub
+│       ├── helper-invoke.stub
+│       ├── helper.stub
+│       ├── interface.stub
+│       ├── job-queued.stub
+│       ├── job.stub
+│       ├── json.stub
+│       ├── listener-duck.stub
+│       ├── listener-queued-duck.stub
+│       ├── listener-queued.stub
+│       ├── listener.stub
+│       ├── mail.stub
+│       ├── middleware.stub
+│       ├── migration
+│       │   ├── add.stub
+│       │   ├── create.stub
+│       │   ├── delete.stub
+│       │   ├── drop.stub
+│       │   └── plain.stub
+│       ├── model.stub
+│       ├── notification.stub
+│       ├── observer.stub
+│       ├── package.stub
+│       ├── policy.plain.stub
+│       ├── provider.stub
+│       ├── repository-invoke.stub
+│       ├── repository.stub
+│       ├── request.stub
+│       ├── resource-collection.stub
+│       ├── resource.stub
+│       ├── route-provider.stub
+│       ├── routes
+│       │   ├── api.stub
+│       │   └── web.stub
+│       ├── rule.implicit.stub
+│       ├── rule.stub
+│       ├── scaffold
+│       │   ├── config.stub
+│       │   └── provider.stub
+│       ├── scope.stub
+│       ├── seeder.stub
+│       ├── service-invoke.stub
+│       ├── service.stub
+│       ├── tests
+│       │   ├── feature.stub
+│       │   └── unit.stub
+│       ├── trait.stub
+│       ├── view.stub
+│       ├── views
+│       │   ├── index.stub
+│       │   └── master.stub
+│       └── vite.stub
+├── tailwind.config.js
+├── tests
+│   ├── Feature
+│   │   └── ExampleTest.php
+│   ├── TestCase.php
+│   └── Unit
+│       └── ExampleTest.php
+├── vite-module-loader.js
+└── vite.config.js
+
+144 directories, 273 files

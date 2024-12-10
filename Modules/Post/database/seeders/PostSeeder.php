@@ -1,0 +1,17 @@
+<?php
+
+namespace Modules\Post\Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Modules\Post\Models\Post;
+
+class PostSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        Post::factory(20)->create();
+    }
+}
